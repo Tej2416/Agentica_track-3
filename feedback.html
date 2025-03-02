@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Feedback</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1>AI Interview Assistant</h1>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="start-interview.html">Retry Interview</a></li>
+        </ul>
+    </nav>
+
+    <!-- Feedback Section -->
+    <div class="feedback-container">
+        <h2>Your AI-Powered Interview Feedback</h2>
+        <p>Here’s an analysis of your interview performance.</p>
+
+        <div class="feedback-box">
+            <h3>✅ What went well Performance</h3>
+            <p id="what-went-well-feedback">Analyzing...</p>
+        </div>
+
+        <div class="feedback-box">
+            <h3>🗣️ Communication Skills</h3>
+            <p id="communication-feedback">Analyzing...</p>
+        </div>
+
+        <div class="feedback-box">
+            <h3>💡 Technical Competency</h3>
+            <p id="technical-feedback">Analyzing...</p>
+        </div>
+
+        <div class="feedback-box">
+            <h3>📌 Areas of Improvement</h3>
+            <p id="improvement-feedback">Analyzing...</p>
+        </div>
+
+        <div class="feedback-box">
+            <h3>📖 Missing Key Terminologies</h3>
+            <p id="terminology-feedback">Analyzing...</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Simulated AI-generated feedback (Replace this with actual AI response integration)
+            const feedbackData = {
+                "what-went-well-feedback": "You acknowledged facing a technical challenge, demonstrating awareness of project complexities. You briefly mentioned the nature of the challenge (API integration issues).",
+                "communication-feedback": "Your tone was clear, but you need to reduce filler words like 'um' and 'uh'.",
+                "technical-feedback": "The answer lacked specifics about the technologies used and the methods employed for API integration. Mentioning specific technologies or approaches would have demonstrated more technical expertise.",
+                "improvement-feedback": "Work on structuring your answers more concisely and practice behavioral questions.",
+                
+            };
+
+            document.getElementById("what-went-well-feedback").innerText = feedbackData["what-went-well-feedback"];
+            document.getElementById("communication-feedback").innerText = feedbackData["communication-feedback"];
+            document.getElementById("technical-feedback").innerText = feedbackData["technical-feedback"];
+            document.getElementById("improvement-feedback").innerText = feedbackData["improvement-feedback"];
+            
+        });
+    </script>
+
+</body>
+</html>

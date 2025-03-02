@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- Sidebar Menu -->
+    <div class="sidebar" id="sidebar">
+        <a href="#">📂 Previous Assessments</a>
+        <a href="#">🏆 Achievements</a>
+        <a href="#">📈 Improvements</a>
+        <a href="#">📌 Main Details</a>
+        <a href="#" onclick="toggleMenu()">❌ Close</a>
+    </div>
+    
+    <!-- Menu Button -->
+    <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1>AI Interview Assistant</h1>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="start-interview.html">Start Interview</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="login.html" class="login-btn">Login</a></li>
+            <li><button id="dark-mode-toggle">🌙 Dark Mode</button></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section -->
+    <header class="hero">
+        <h2>Prepare for Your Next Interview with AI</h2>
+        <p>Practice real-world interview questions, get instant feedback, and improve your skills.</p>
+        <div class="start-box">
+            <a href="start-interview.html" class="start-btn">Start Now</a>
+        </div>
+    </header>
+
+    <!-- Login Section -->
+    <section class="login-section">
+        <h3>Already have an account?</h3>
+        <a href="login.html" class="login-btn">Login</a>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2025 AI Interview Assistant | Hackathon Project</p>
+    </footer>
+    
+    <!-- JavaScript for Sidebar & Dark Mode -->
+    <script>
+        function toggleMenu() {
+            document.getElementById("sidebar").classList.toggle("active");
+        }
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById("dark-mode-toggle");
+        const body = document.body;
+
+        // Check local storage for mode preference
+        if (localStorage.getItem("dark-mode") === "enabled") {
+            body.classList.add("dark-mode");
+            darkModeToggle.textContent = "☀️ Light Mode";
+        }
+
+        darkModeToggle.addEventListener("click", () => {
+            body.classList.toggle("dark-mode");
+            if (body.classList.contains("dark-mode")) {
+                localStorage.setItem("dark-mode", "enabled");
+                darkModeToggle.textContent = "☀️ Light Mode";
+            } else {
+                localStorage.setItem("dark-mode", "disabled");
+                darkModeToggle.textContent = "🌙 Dark Mode";
+            }
+        });
+    </script>
+    
+</body>
+</html>

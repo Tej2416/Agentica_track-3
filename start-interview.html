@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Session</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1>AI Interview Assistant</h1>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="start-interview.html">Restart Interview</a></li>
+            <li><a href="#">Profile</a></li>
+        </ul>
+    </nav>
+
+    <!-- Interview Container -->
+    <div class="interview-session">
+        <h2>Live AI Interview</h2>
+
+        <!-- Video & Voice Section -->
+        <div class="video-container">
+            <video id="webcam" autoplay playsinline></video>
+            <div class="controls">
+                <button id="voiceToggle" class="toggle-btn off" onclick="toggleVoice()">🎤 Voice OFF</button>
+                <button id="videoToggle" class="toggle-btn off" onclick="toggleVideo()">📹 Video OFF</button>
+            </div>
+        </div>
+
+        <!-- Question Box -->
+        <div class="question-box">
+            <h3 id="question">Loading Question...</h3>
+            <button class="next-btn" onclick="nextQuestion()">➡️ Next Question</button>
+        </div>
+
+        <!-- AI Feedback -->
+        <div class="feedback-box">
+            <h4>AI Feedback:</h4>
+            <p id="feedback">Your responses will be analyzed in real time.</p>
+        </div>
+
+        <!-- New Feedback Button -->
+        <div class="feedback-button-container">
+            <a href="feedback.html" class="feedback-btn">📝 Give Feedback</a>
+        </div>
+    </div>
+
+    <script>
+        let questions = [
+            "Can you share an example of a time when you faced a significant challenge and how you overcome it?",
+            "Can you tell me more about the specific technical skills you used to overcome that challenge?",
+            "What excites you about the potential impact or contribution you could make in this role?",
+            "Can you tell me about a time you had to overcome a technical challenge in a previous project?"
+        ];
+        let currentQuestionIndex = 0;
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                document.getElementById("question").innerText = questions[currentQuestionIndex];
+            } else {
+                alert("Interview Completed!");
+            }
+        }
+
+        // Webcam Activation
+        let stream = null;
+
+        async function startWebcam() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                document.getElementById("webcam").srcObject = stream;
+            } catch (error) {
+                alert("Webcam access denied.");
+            }
+        }
+
+        function toggleVoice() {
+            let btn = document.getElementById("voiceToggle");
+            if (btn.classList.contains("off")) {
+                btn.classList.remove("off");
+                btn.classList.add("on");
+                btn.textContent = "🎤 Voice ON";
+                stream.getAudioTracks().forEach(track => track.enabled = true);
+            } else {
+                btn.classList.remove("on");
+                btn.classList.add("off");
+                btn.textContent = "🎤 Voice OFF";
+                stream.getAudioTracks().forEach(track => track.enabled = false);
+            }
+        }
+
+        function toggleVideo() {
+            let btn = document.getElementById("videoToggle");
+            if (btn.classList.contains("off")) {
+                btn.classList.remove("off");
+                btn.classList.add("on");
+                btn.textContent = "📹 Video ON";
+                stream.getVideoTracks().forEach(track => track.enabled = true);
+            } else {
+                btn.classList.remove("on");
+                btn.classList.add("off");
+                btn.textContent = "📹 Video OFF";
+                stream.getVideoTracks().forEach(track => track.enabled = false);
+            }
+        }
+
+        window.onload = function () {
+            document.getElementById("question").innerText = questions[0];
+            startWebcam();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+# Ignore Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+venv/
+.env/
+
+# Ignore secret environment files
+*.env
+
+# Ignore dependency files
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore log and database files
+*.log
+*.sqlite3
+
+# Ignore IDE and editor config files
+.vscode/
+.idea/
+*.iml
+
+# Ignore node_modules (if using any frontend JS packages)
+node_modules/
+
+# Ignore static & temporary files
+/staticfiles/
+/media/
+*.bak
+*.swp
+
+# Ignore built files
+dist/
+build/
+
+# Ignore WinRAR and compressed archives
+*.rar
+*.zip
+
+# Ignore uploaded user files (if applicable)
+uploads/
+
+# Ignore Docker-related files (if using Docker)
+docker-compose.override.yml
+*.dockerfile
